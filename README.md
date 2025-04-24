@@ -6,7 +6,7 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/TrueSelph/policy_action)
 ![GitHub](https://img.shields.io/github/license/TrueSelph/policy_action)
 
-JIVAS action for managing AI policy document serving for an Agent.
+The policy action provides the means to serve an AI policy document to users. THe action provides a markdown representation for editing and generates an HTML document made accessible via the public file interface. The package is a singleton and requires the Jivas library version 2.0.0.
 
 ## Package Information
 
@@ -25,56 +25,10 @@ JIVAS action for managing AI policy document serving for an Agent.
 - **Singleton:** true
 
 ## Dependencies
-
 - **Jivas:** `^2.0.0`
-
-This package, developed by V75 Inc., focuses on managing the serving of AI policy documents for an agent. As a core action, it ensures that AI policies are accessible and appropriately integrated into agent operations. The package is a singleton and requires the Jivas library version 2.0.0.
-
----
-
-## How to Use
-
-Below is detailed guidance on how to configure and use the Policy Action.
-
-### Overview
-
-The Policy Action provides a mechanism for serving AI policy documents. It supports configurations for various use cases, including:
-
-- **Dynamic content generation** based on agent-specific data.
-- **Integration** with JIVAS agents for seamless policy management.
+- **markdown:** `>=3.8`
 
 ---
-
-### Configuration Structure
-
-The configuration consists of the following components:
-
-### `policy_settings`
-
-Defines the settings for the policy content, such as placeholders and dynamic replacements.
-
-```python
-policy_settings = {
-    "agent_name": "example_agent",  # Example: "example_agent"
-    "content": "Your policy content here."  # Policy content template
-}
-```
-
----
-
-### Example Configurations
-
-### Basic Configuration for Policy Content
-
-```python
-policy_settings = {
-    "agent_name": "TrueSelph",
-    "content": """
-    # AI Policy - {agent_name}
-    This is a sample policy document for {agent_name}.
-    """
-}
-```
 
 ### Best Practices
 - Ensure placeholders in the content are replaced dynamically.
