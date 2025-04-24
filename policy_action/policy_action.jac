@@ -1,8 +1,12 @@
+import:py markdown;
+import:py from typing { Union }
 import:jac from jivas.agent.action.action { Action }
+import:py from jivas.agent.modules.agentlib.utils { Utils, file_interface }
 
 node PolicyAction :Action: {
     # Manages AI policy document serving for an Agent
 
+    has policy_url:str = "";
     has content: str = """
 # AI Policy - {agent_name}
 
@@ -68,5 +72,56 @@ TrueSelph Inc.
 14 March, 2024
 
 """;
+
+    can on_register() {
+        if self.enabled {
+            self.dump_policy_document();
+        }
+    }
+
+    can postupdate() {
+        self.dump_policy_document();
+    }
+
+    can healthcheck() -> Union[bool, dict] {
+
+        if not self.content {
+            return {
+                "status": True,
+                "message": "Policy document content is missing.",
+                "severity": "warning"
+            };
+        }
+
+        if(not self.policy_url) {
+            return {
+                "status": False,
+                "message": "Policy document may not be accessible.",
+                "severity": "error"
+            };
+        }
+    }
+
+    can dump_policy_document() -> bool {
+        # writes current policy document to the public filesystem
+
+        if not self.content {
+            return False;
+        }
+
+        agent_name = self.get_agent().name;
+        # prepare filename based on agent
+        output_filename = f"{Utils.to_snake_case(agent_name)}.html";
+        output_file_path = f"policy/{output_filename}";
+        # convert markdown to html bytes for file writing
+        html = markdown.markdown( (self.content).replace('{agent_name}', agent_name) );
+        # save document to the file system
+        if(file_interface.save_file(output_file_path, html.encode('utf-8'))) {
+            self.policy_url = file_interface.get_file_url(output_file_path);
+            return True;
+        }
+
+        return False;
+    }
 
 }
