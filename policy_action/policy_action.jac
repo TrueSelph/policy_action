@@ -79,7 +79,7 @@ TrueSelph Inc.
         }
     }
 
-    can postupdate() {
+    can post_update() {
         self.dump_policy_document();
     }
 

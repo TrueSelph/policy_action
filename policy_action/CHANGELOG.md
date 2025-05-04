@@ -4,3 +4,6 @@
 ## 0.0.2
 - Added functionality to generate HTML document for access via the public file interface
 - Added get_file_url endpoint to get the URL for the policy document
+
+## 0.0.3
+- Updated postupdate() to post_updat(e) for compatibility with core change
