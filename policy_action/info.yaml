@@ -2,7 +2,7 @@ package:
   name: jivas/policy_action
   author: V75 Inc.
   architype: PolicyAction
-  version: 0.0.2
+  version: 0.0.3
   meta:
     title: Policy Action
     description: Manages AI policy document serving for an Agent
@@ -11,7 +11,7 @@ package:
   config:
     singleton: true
   dependencies:
-    jivas: ^2.0.0
+    jivas: ^2.0.0-alpha.43
     pip:
       markdown: ">=3.8"
 
