@@ -6,7 +6,7 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/TrueSelph/policy_action)
 ![GitHub](https://img.shields.io/github/license/TrueSelph/policy_action)
 
-The policy action provides the means to serve an AI policy document to users. THe action provides a markdown representation for editing and generates an HTML document made accessible via the public file interface. The package is a singleton and requires the Jivas library version 2.0.0.
+The policy action provides the means to serve an AI policy document to users. THe action provides a markdown representation for editing and generates an HTML document made accessible via the public file interface. The package is a singleton and requires the Jivas library version 2.1.0.
 
 ## Package Information
 
@@ -25,7 +25,7 @@ The policy action provides the means to serve an AI policy document to users. TH
 - **Singleton:** true
 
 ## Dependencies
-- **Jivas:** `^2.0.0`
+- **Jivas:** `^2.1.0`
 - **markdown:** `>=3.8`
 
 ---
