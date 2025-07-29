@@ -10,7 +10,7 @@ walker get_policy_url(agent_graph_walker) {
     has response:str = "";
 
     class __specs__ {
-        static has private: bool = True;
+        static has private: bool = False;
         static has path: str = Utils.action_walker_path(__module__);
     }
 
