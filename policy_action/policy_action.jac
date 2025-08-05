@@ -1,6 +1,6 @@
 import markdown;
 import from typing { Union }
-import from jivas.agent.modules.agentlib.utils { Utils }
+import from jivas.agent.modules.text.formatting { to_snake_case }
 import from jivas.agent.action.action { Action }
 
 node PolicyAction(Action) {
@@ -111,7 +111,7 @@ TrueSelph Inc.
 
         agent_name = self.get_agent().name;
         # prepare filename based on agent
-        output_filename = f"{Utils.to_snake_case(agent_name)}.html";
+        output_filename = f"{to_snake_case(agent_name)}.html";
         output_file_path = f"policy/{output_filename}";
         # convert markdown to html bytes for file writing
         html = markdown.markdown( (self.content).replace('{agent_name}', agent_name) );

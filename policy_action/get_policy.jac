@@ -2,10 +2,17 @@ import from jivas.agent.core.agent { Agent }
 import from jivas.agent.action.action { Action }
 import from jivas.agent.action.actions { Actions }
 import from jivas.agent.action.agent_graph_walker { agent_graph_walker }
+import from jivas.agent.modules.action.path { action_walker_path }
 
 
 walker get_policy(agent_graph_walker) {
 
+    has reporting:bool = True;
+
+    class __specs__ {
+        static has private: bool = False;
+        static has path: str = action_walker_path(__module__);
+    }
 
     can on_agent with Agent entry {
         self.agent_name = here.name;
@@ -30,5 +37,9 @@ walker get_policy(agent_graph_walker) {
         }
 
         self.response = content;
+
+        if self.reporting {
+            report self.response;
+        }
     }
 }
