@@ -1,9 +1,9 @@
-import:py markdown;
-import:py from typing { Union }
-import:jac from jivas.agent.action.action { Action }
-import:py from jivas.agent.modules.agentlib.utils { Utils }
+import markdown;
+import from typing { Union }
+import from jivas.agent.modules.text.formatting { to_snake_case }
+import from jivas.agent.action.action { Action }
 
-node PolicyAction :Action: {
+node PolicyAction(Action) {
     # Manages AI policy document serving for an Agent
 
     has policy_url:str = "";
@@ -73,17 +73,17 @@ TrueSelph Inc.
 
 """;
 
-    can on_register() {
+    def on_register() {
         if self.enabled {
             self.dump_policy_document();
         }
     }
 
-    can post_update() {
+    def post_update() {
         self.dump_policy_document();
     }
 
-    can healthcheck() -> Union[bool, dict] {
+    def healthcheck() -> Union[bool, dict] {
 
         if not self.content {
             return {
@@ -102,7 +102,7 @@ TrueSelph Inc.
         }
     }
 
-    can dump_policy_document() -> bool {
+    def dump_policy_document() -> bool {
         # writes current policy document to the public filesystem
 
         if not self.content {
@@ -111,7 +111,7 @@ TrueSelph Inc.
 
         agent_name = self.get_agent().name;
         # prepare filename based on agent
-        output_filename = f"{Utils.to_snake_case(agent_name)}.html";
+        output_filename = f"{to_snake_case(agent_name)}.html";
         output_file_path = f"policy/{output_filename}";
         # convert markdown to html bytes for file writing
         html = markdown.markdown( (self.content).replace('{agent_name}', agent_name) );

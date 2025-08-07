@@ -9,3 +9,6 @@
 - Updated file handling to use agent-tagged file methods
 - Patched post_update call
 - Added short file URL for policy document
+
+# 0.1.0
+- Updated to support Jivas 2.1.0
